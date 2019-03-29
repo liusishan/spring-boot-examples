@@ -1,0 +1,10 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vuejsdemo
+    username: root
+    password: admin
+
+server:
+  port: 80

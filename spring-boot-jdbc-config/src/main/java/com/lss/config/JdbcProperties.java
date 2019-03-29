@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Date: 2019/3/29 14:33
  * @Description:
  */
-@ConfigurationProperties(prefix = "jdbc")
+//@ConfigurationProperties(prefix = "jdbc")
 @Data
 public class JdbcProperties {
     String url;

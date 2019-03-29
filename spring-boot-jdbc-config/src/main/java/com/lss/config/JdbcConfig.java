@@ -2,6 +2,7 @@ package com.lss.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 //@PropertySource("classpath:jdbc.properties")
-@EnableConfigurationProperties(JdbcProperties.class)
+//@EnableConfigurationProperties(JdbcProperties.class)
 public class JdbcConfig {
 
 //    @Value("${jdbc.url}")
@@ -28,15 +29,22 @@ public class JdbcConfig {
 //    @Value("${jdbc.password}")
 //    String password;
 
-    @Bean
-    public DataSource dataSource(JdbcProperties properties) {
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName(properties.driverClassName);
-        dataSource.setUrl(properties.url);
-        dataSource.setUsername(properties.username);
-        dataSource.setPassword(properties.password);
+//    @Bean
+//    public DataSource dataSource(JdbcProperties properties) {
+//        DruidDataSource dataSource = new DruidDataSource();
+//        dataSource.setDriverClassName(properties.driverClassName);
+//        dataSource.setUrl(properties.url);
+//        dataSource.setUsername(properties.username);
+//        dataSource.setPassword(properties.password);
+//
+//        return dataSource;
+//    }
 
-        return dataSource;
+    @Bean
+    @ConfigurationProperties(prefix = "jdbc")
+    public DataSource dataSource() {
+        return new DruidDataSource();
     }
+
 
 }

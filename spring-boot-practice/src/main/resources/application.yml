@@ -12,3 +12,8 @@ logging:
   level:
     com.lss: debug
 #    org.springframework: debug
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.lss.pojo
+#  mapper-locations: mapper/*.xml

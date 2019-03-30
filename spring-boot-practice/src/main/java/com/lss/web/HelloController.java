@@ -1,6 +1,10 @@
 package com.lss.web;
 
+import com.lss.pojo.User;
+import com.lss.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,12 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
+@RequestMapping("/user")
 public class HelloController {
 
-    @RequestMapping("/hello")
-    public String hello(){
-        log.debug("hello method is running");
-        return "hello boot";
+    @Autowired
+    private UserService userService;
+
+
+    @RequestMapping("/{id}")
+    public User hello(@PathVariable Integer id){
+        return userService.queryById(id);
     }
 
 }

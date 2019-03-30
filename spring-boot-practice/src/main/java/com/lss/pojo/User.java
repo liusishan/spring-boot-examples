@@ -1,7 +1,11 @@
 package com.lss.pojo;
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -10,9 +14,12 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
+@Table(name="user")
 public class User implements Serializable {
 
     // id
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
     // 用户名
     private String username;
@@ -24,6 +31,9 @@ public class User implements Serializable {
     private String sex;
     // email
     private String email;
+    // 备注
+    @Transient
+    private String note;
 
 
 
